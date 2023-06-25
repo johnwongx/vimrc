@@ -14,6 +14,7 @@ endif
 
 let mapleader = ","
 inoremap jk <Esc>
+set autowrite
 
 "==========================plug split===========================
 call plug#begin('~/.vim/plugged')
@@ -92,7 +93,8 @@ Plug 'python-mode/python-mode'
 Plug 'qpkorr/vim-renamer'
 
 " 无限制撤销
-Plug 'thoughtstream/Damian-Conway-s-Vim-Setup'
+" 因为该插件会映射正常模式下/按键，所以暂时去掉该插件
+"Plug 'thoughtstream/Damian-Conway-s-Vim-Setup'
 
 " 括号不同颜色
 Plug 'frazrepo/vim-rainbow'
