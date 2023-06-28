@@ -152,6 +152,11 @@ set guifont=FiraCode\ 12
 autocmd vimenter * ++nested colorscheme gruvbox
 set background=dark
 
+" 搜索高亮
+set hlsearch
+" 搜索输入内容变化时自动跳转
+set incsearch
+
 "==========================map split===========================
 " 中断模式下esc退出
 tnoremap <Esc>      <C-\><C-N>
@@ -354,3 +359,14 @@ highlight GitGutterAdd    guifg=#009900 ctermfg=2
 highlight GitGutterChange guifg=#bbbb00 ctermfg=3
 highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 let g:gitgutter_set_sign_backgrounds = 1
+
+" 隐藏gvim菜单栏，使用<M-F1>唤出
+set guioptions-=m
+set guioptions-=T
+map <silent> <M-F1> :if &guioptions=~#'T' <Bar>
+        \set guioptions-=T <Bar>
+        \set guioptions-=m <bar>
+    \else <Bar>
+        \set guioptions+=T <Bar>
+        \set guioptions+=m <Bar>
+    \endif<CR>
