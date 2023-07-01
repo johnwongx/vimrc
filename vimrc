@@ -146,7 +146,7 @@ set spelllang=en_gb
 set spelllang+=cjk
 
 "set guifont=Source\ Code\ Pro\ 12
-set guifont=FiraCode\ 12
+set guifont=Fira\ Code:h12
 
 "colorscheme jellybeans
 autocmd vimenter * ++nested colorscheme gruvbox
