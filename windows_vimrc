@@ -6,6 +6,8 @@
 " -安装bat		https://github.com/sharkdp/bat
 " -安装以上三个软件后，配置环境变量 export FZF_DEFAULT_COMMAND='rg --files --sortr modified'
 
+set pythonthreedll=~\AppData\Local\Programs\Python\Python310-32\python310.dll
+
 " 防止在终端里边嵌套vim
 if exists('$VIM_TERMINAL')
   echoerr 'Do not run Vim inside a Vim terminal'
@@ -87,7 +89,7 @@ Plug 'mg979/vim-visual-multi'
 Plug 'mbbill/echofunc'
 
 " Python开发环境支持
-Plug 'python-mode/python-mode'
+Plug 'python-mode/python-mode',{'for':'python','branch':'develop'}
 
 " 批量修改文件名，:Renamer,完成后执行:Ren
 Plug 'qpkorr/vim-renamer'
@@ -278,16 +280,25 @@ if exists('g:c_comment_strings')
 endif
 
 " python-mode配置
+let g:pymode_python = 'python3'
 function! IsGitRepo()
+  " This function requires GitPython
   if has('pythonx')
-    pythonx import git
-    pythonx vim.command("let s:is_git = '0'")
-    pythonx try:
-    pythonx     _ = git.Repo('.', search_parent_directories=True).git_dir
-    pythonx     vim.command("let s:is_git = '1'")
-    pythonx except:
-    pythonx     pass
-    return s:is_git
+pythonx << EOF
+try:
+    import git
+except ImportError:
+    pass
+import vim
+
+def is_git_repo():
+    try:
+        _ = git.Repo('.', search_parent_directories=True).git_dir
+        return 1
+    except:
+        return 0
+EOF
+    return pyxeval('is_git_repo()')
   else
     return 0
   endif
