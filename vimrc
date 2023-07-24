@@ -146,7 +146,7 @@ set spelllang=en_gb
 set spelllang+=cjk
 
 "set guifont=Source\ Code\ Pro\ 12
-set guifont=Fira\ Code:h12
+set guifont=FiraCode\ 12
 
 "colorscheme jellybeans
 autocmd vimenter * ++nested colorscheme gruvbox
@@ -218,6 +218,7 @@ endif
 
 " 其他类型文件代码格式设置
 au FileType c,cpp,objc  setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4 cinoptions=:0,g0,(0,w1
+au FileType go          setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
 au FileType json        setlocal expandtab shiftwidth=2 softtabstop=2
 au FileType vim         setlocal expandtab shiftwidth=2 softtabstop=2
 
