@@ -1,0 +1,24 @@
+let mapleader = ","
+inoremap jk <Esc>
+
+set nu
+set rnu
+
+" 搜索高亮
+set hlsearch
+" 搜索输入内容变化时自动跳转
+set incsearch
+
+"==========================map split===========================
+" 替换光标下单词的键映射
+nnoremap <Leader>v viw"0p
+vnoremap <Leader>v    "0p
+
+nnoremap <C-Tab>   <C-W>w
+inoremap <C-Tab>   <C-O><C-W>w
+nnoremap <C-S-Tab> <C-W>W
+inoremap <C-S-Tab> <C-O><C-W>W
+
+" 停止搜索高亮的键映射
+nnoremap <silent> <F2>      :nohlsearch<CR>
+inoremap <silent> <F2> <C-O>:nohlsearch<CR>
