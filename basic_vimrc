@@ -22,3 +22,7 @@ inoremap <C-S-Tab> <C-O><C-W>W
 " 停止搜索高亮的键映射
 nnoremap <silent> <F2>      :nohlsearch<CR>
 inoremap <silent> <F2> <C-O>:nohlsearch<CR>
+
+" 复制粘贴
+noremap <C-c> "+y
+noremap <C-v> "+p

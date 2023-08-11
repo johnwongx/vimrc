@@ -6,6 +6,12 @@
 " -安装bat		https://github.com/sharkdp/bat
 " -安装以上三个软件后，配置环境变量 export FZF_DEFAULT_COMMAND='rg --files --sortr modified'
 
+let is_windows = has('win32') || has('win64')
+
+if is_windows
+  set pythonthreedll=~\AppData\Local\Programs\Python\Python310-32\python310.dll
+endif
+
 " 防止在终端里边嵌套vim
 if exists('$VIM_TERMINAL')
   echoerr 'Do not run Vim inside a Vim terminal'
@@ -146,7 +152,11 @@ set spelllang=en_gb
 set spelllang+=cjk
 
 "set guifont=Source\ Code\ Pro\ 12
-set guifont=FiraCode\ 12
+if is_windows
+  set guifont=Fira\ Code:h12
+else
+  set guifont=FiraCode\ 12
+endif
 
 "colorscheme jellybeans
 autocmd vimenter * ++nested colorscheme gruvbox
@@ -157,7 +167,15 @@ set hlsearch
 " 搜索输入内容变化时自动跳转
 set incsearch
 
+if is_windows
+  set backspace=indent,eol,start
+endif
+
 "==========================map split===========================
+" 复制粘贴
+noremap <C-c> "+y
+noremap <C-v> "+p
+
 " 中断模式下esc退出
 tnoremap <Esc>      <C-\><C-N>
 tnoremap <C-V><Esc> <Esc>
@@ -415,6 +433,7 @@ if exists('g:c_comment_strings')
 endif
 
 " python-mode配置
+let g:pymode_python = 'python3'
 function! IsGitRepo()
   " This function requires GitPython
   if has('pythonx')
