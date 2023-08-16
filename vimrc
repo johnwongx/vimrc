@@ -174,7 +174,6 @@ endif
 "==========================map split===========================
 " 复制粘贴
 noremap <C-c> "+y
-noremap <C-v> "+p
 
 " 中断模式下esc退出
 tnoremap <Esc>      <C-\><C-N>

@@ -25,4 +25,3 @@ inoremap <silent> <F2> <C-O>:nohlsearch<CR>
 
 " 复制粘贴
 noremap <C-c> "+y
-noremap <C-v> "+p
